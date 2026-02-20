@@ -7,17 +7,17 @@ import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, T
 const planos = [
   {
     name: 'Starter',
-    description: 'Seu time de marketing e administrativo operando 24/7 para automatizar seu negócio.',
+    description: 'Um time de especialistas trabalhando 24/7 no seu negócio.',
     price: '129',
     period: '/mês',
     features: [
-      { icon: Zap, text: 'Acesso a +50 Modelos de IA', included: true },
-      { icon: Clock, text: 'Arcco Agente', included: true },
-      { icon: Image, text: 'Estúdio de Design Integrado', included: true },
-      { icon: FileText, text: 'Geração de Arquivos', included: true },
-      { icon: TrendingUp, text: 'Inteligência de Mercado', included: true },
-      { icon: Users, text: 'Auditoria de Instagram', included: true },
-      { icon: HardDrive, text: 'Arcco Drive (2GB)', included: true },
+      { icon: Zap, text: 'Acesso a +50 Modelos de IA', description: 'Os melhores LLMs do mercado em um único lugar.', included: true },
+      { icon: Clock, text: 'Arcco Agente', description: 'Mais que um chat, um assistente virtual focado em execução.', included: true },
+      { icon: Image, text: 'Estúdio de Design Integrado', description: 'Geração de posts e carrosséis profissionais em segundos.', included: true },
+      { icon: FileText, text: 'Geração de Arquivos', description: 'Crie propostas em PDF, contratos e planilhas prontas para baixar.', included: true },
+      { icon: TrendingUp, text: 'Inteligência de Mercado', description: 'Espione concorrentes e obtenha dados avançados de tráfego.', included: true },
+      { icon: Users, text: 'Auditoria de Instagram', description: 'Análise completa de perfil por URL com plano de ação.', included: true },
+      { icon: HardDrive, text: 'Arcco Drive (2GB)', description: 'Cofre digital para armazenar com segurança tudo o que a IA gerar.', included: true },
     ],
     popular: false,
     cta: 'Começar Agora',
@@ -133,13 +133,17 @@ export default function Planos() {
                   <ul className="space-y-4 mb-8">
                     {plano.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start space-x-3">
-                        <div className={`mt-0.5 rounded-full p-1 ${feature.included ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                        <div className={`mt-0.5 rounded-full p-1 shrink-0 ${feature.included ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
                           <Check className="w-3 h-3" />
                         </div>
-                        <span className={`text-sm ${feature.included ? 'text-foreground' : 'text-muted-foreground line-through decoration-muted-foreground/50'
-                          }`}>
-                          {feature.text}
-                        </span>
+                        <div>
+                          <span className={`text-sm font-medium ${feature.included ? 'text-foreground' : 'text-muted-foreground line-through decoration-muted-foreground/50'}`}>
+                            {feature.text}
+                          </span>
+                          {feature.description && (
+                            <p className="text-xs text-muted-foreground mt-0.5">{feature.description}</p>
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
