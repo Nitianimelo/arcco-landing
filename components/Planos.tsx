@@ -2,9 +2,16 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, TrendingUp, Search, HardDrive, FileText, Image } from 'lucide-react'
+import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, TrendingUp, Search, HardDrive, FileText, Image, LucideIcon } from 'lucide-react'
 
-const planos = [
+interface Feature {
+  icon: LucideIcon
+  text: string
+  description?: string
+  included: boolean
+}
+
+const planos: { name: string; description: string; price: string; period: string; features: Feature[]; popular: boolean; cta: string }[] = [
   {
     name: 'Starter',
     description: 'Um time de especialistas trabalhando 24/7 no seu negócio.',
