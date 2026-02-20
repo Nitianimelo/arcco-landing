@@ -2,23 +2,29 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, TrendingUp, Search, HardDrive, FileText, Image } from 'lucide-react'
+import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, TrendingUp, Search, HardDrive, FileText, Image, LucideIcon } from 'lucide-react'
 
-const planos = [
+interface Feature {
+  icon: LucideIcon
+  text: string
+  description?: string
+  included: boolean
+}
+
+const planos: { name: string; description: string; price: string; period: string; features: Feature[]; popular: boolean; cta: string }[] = [
   {
     name: 'Starter',
-    description: 'Tudo que você precisa para começar a automatizar seu negócio com IA.',
+    description: 'Um time de especialistas trabalhando 24/7 no seu negócio.',
     price: '129',
     period: '/mês',
     features: [
-      { icon: Zap, text: '50 melhores modelos de LLM', included: true },
-      { icon: Clock, text: 'Arcco Agent', included: true },
-      { icon: TrendingUp, text: 'Análise de Mercado', included: true },
-      { icon: Search, text: 'Inteligência de Mercado (espionagem de concorrentes)', included: true },
-      { icon: HardDrive, text: 'Arcco Drive — 2GB de armazenamento', included: true },
-      { icon: Users, text: 'Auditoria de Instagram por URL', included: true },
-      { icon: FileText, text: 'Geração de PDFs, contratos e planilhas', included: true },
-      { icon: Image, text: 'Geração de posts e designs profissionais', included: true },
+      { icon: Zap, text: 'Acesso a +50 Modelos de IA', description: 'Os melhores LLMs do mercado em um único lugar.', included: true },
+      { icon: Clock, text: 'Arcco Agente', description: 'Mais que um chat, um assistente virtual focado em execução.', included: true },
+      { icon: Image, text: 'Estúdio de Design Integrado', description: 'Geração de posts e carrosséis profissionais em segundos.', included: true },
+      { icon: FileText, text: 'Geração de Arquivos', description: 'Crie propostas em PDF, contratos e planilhas prontas para baixar.', included: true },
+      { icon: TrendingUp, text: 'Inteligência de Mercado', description: 'Espione concorrentes e obtenha dados avançados de tráfego.', included: true },
+      { icon: Users, text: 'Auditoria de Instagram', description: 'Análise completa de perfil por URL com plano de ação.', included: true },
+      { icon: HardDrive, text: 'Arcco Drive (2GB)', description: 'Cofre digital para armazenar com segurança tudo o que a IA gerar.', included: true },
     ],
     popular: false,
     cta: 'Começar Agora',
@@ -134,13 +140,17 @@ export default function Planos() {
                   <ul className="space-y-4 mb-8">
                     {plano.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start space-x-3">
-                        <div className={`mt-0.5 rounded-full p-1 ${feature.included ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                        <div className={`mt-0.5 rounded-full p-1 shrink-0 ${feature.included ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
                           <Check className="w-3 h-3" />
                         </div>
-                        <span className={`text-sm ${feature.included ? 'text-foreground' : 'text-muted-foreground line-through decoration-muted-foreground/50'
-                          }`}>
-                          {feature.text}
-                        </span>
+                        <div>
+                          <span className={`text-sm font-medium ${feature.included ? 'text-foreground' : 'text-muted-foreground line-through decoration-muted-foreground/50'}`}>
+                            {feature.text}
+                          </span>
+                          {feature.description && (
+                            <p className="text-xs text-muted-foreground mt-0.5">{feature.description}</p>
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
