@@ -2,24 +2,26 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check } from 'lucide-react'
+import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, TrendingUp, Search, HardDrive, FileText, Image } from 'lucide-react'
 
 const planos = [
   {
     name: 'Starter',
-    description: 'Perfeito para pequenos negócios começarem com IA.',
-    price: '0',
+    description: 'Tudo que você precisa para começar a automatizar seu negócio com IA.',
+    price: '129',
     period: '/mês',
     features: [
-      { icon: Zap, text: '1 Automação Inteligente', included: true },
-      { icon: Database, text: '1 Banco de Conhecimento', included: true },
-      { icon: Infinity, text: 'Iterações Ilimitadas', included: true },
-      { icon: Users, text: '2 Usuários no Time', included: true },
-      { icon: Shield, text: 'Suporte por Email', included: true },
-      { icon: Clock, text: 'Integração Básica', included: true },
+      { icon: Zap, text: '50 melhores modelos de LLM', included: true },
+      { icon: Clock, text: 'Arcco Agent', included: true },
+      { icon: TrendingUp, text: 'Análise de Mercado', included: true },
+      { icon: Search, text: 'Inteligência de Mercado (espionagem de concorrentes)', included: true },
+      { icon: HardDrive, text: 'Arcco Drive — 2GB de armazenamento', included: true },
+      { icon: Users, text: 'Auditoria de Instagram por URL', included: true },
+      { icon: FileText, text: 'Geração de PDFs, contratos e planilhas', included: true },
+      { icon: Image, text: 'Geração de posts e designs profissionais', included: true },
     ],
     popular: false,
-    cta: 'Começar Grátis',
+    cta: 'Começar Agora',
   },
   {
     name: 'Pro',
