@@ -58,6 +58,7 @@ const planos: Plano[] = [
       { icon: Bot, text: 'Ollivia — IA no WhatsApp', description: 'Atende o WhatsApp da sua empresa plug & play: SDR, suporte, vendas e tutor.', included: true },
       { icon: Globe, text: 'Arcco Builder', description: 'Crie páginas para o seu negócio conversando com IA. Hospede e publique com um clique.', included: true },
       { icon: HardDrive, text: 'Arcco Drive (10GB)', description: 'Armazenamento expandido para todos os arquivos e conteúdos gerados pela IA.', included: true },
+      { icon: Zap, text: 'Arcco Tools', description: 'Hub de ferramentas plug and play para aplicar de forma fácil e rápida na sua empresa. Pontualmente.', included: true },
     ],
   },
   {
@@ -67,13 +68,7 @@ const planos: Plano[] = [
     price: '',
     priceDisplay: 'Sob Consulta',
     period: '',
-    features: [
-      { icon: Infinity, text: 'Tudo do Plano Ultra', description: 'Acesso completo a todos os produtos e ferramentas Arcco.', included: true },
-      { icon: Database, text: 'Infraestrutura Dedicada', description: 'Ambiente exclusivo com segurança e performance garantidas.', included: true },
-      { icon: Users, text: 'Times e Usuários Ilimitados', description: 'Sem limite de usuários ou workspaces na plataforma.', included: true },
-      { icon: Shield, text: 'Integrações Customizadas', description: 'API, webhooks e conexões sob medida para o seu stack.', included: true },
-      { icon: HeadphonesIcon, text: 'Suporte 24/7 Dedicado', description: 'Gerente de conta exclusivo e SLA garantido em contrato.', included: true },
-    ],
+    features: [],
     popular: false,
     cta: 'Falar com Vendas',
   },

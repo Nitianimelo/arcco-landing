@@ -38,7 +38,7 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed">
-                Inteligência Artificial plug-and-play para transformar PMEs em operações autônomas de alta performance.
+                Inteligência Artificial plug-and-play para transformar empresas brasileiras em operações de alta performance.
               </p>
 
               <div className="max-w-md">
@@ -85,18 +85,6 @@ export default function Footer() {
               </ul>
             </div>
 
-            <div>
-              <h3 className="text-foreground font-semibold mb-6">Legal</h3>
-              <ul className="space-y-4">
-                {['Termos de Uso', 'Privacidade', 'Cookies', 'LGPD'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
 
