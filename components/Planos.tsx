@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, TrendingUp, Search, HardDrive, FileText, Image, LucideIcon } from 'lucide-react'
+import { Zap, Users, Database, HeadphonesIcon, Shield, Infinity, Clock, Check, TrendingUp, HardDrive, FileText, Image, LucideIcon, Bot, Globe, Gauge } from 'lucide-react'
 
 interface Feature {
   icon: LucideIcon
@@ -11,55 +11,67 @@ interface Feature {
   included: boolean
 }
 
-const planos: { name: string; description: string; price: string; period: string; features: Feature[]; popular: boolean; cta: string }[] = [
+interface Plano {
+  name: string
+  tagline: string
+  description: string
+  price: string
+  priceDisplay?: string
+  period: string
+  features: Feature[]
+  popular: boolean
+  cta: string
+  badge?: string
+}
+
+const planos: Plano[] = [
   {
     name: 'Starter',
-    description: 'Um time de especialistas trabalhando 24/7 no seu negócio.',
+    tagline: 'Para quem está começando',
+    description: 'Um time de especialistas de IA trabalhando 24/7 no seu negócio.',
     price: '129',
     period: '/mês',
     features: [
       { icon: Zap, text: 'Acesso a +50 Modelos de IA', description: 'Os melhores LLMs do mercado em um único lugar.', included: true },
-      { icon: Clock, text: 'Arcco Agente', description: 'Mais que um chat, um assistente virtual focado em execução.', included: true },
+      { icon: Clock, text: 'Arcco Agente', description: 'Mais que um chat, um assistente focado em execução.', included: true },
       { icon: Image, text: 'Estúdio de Design Integrado', description: 'Geração de posts e carrosséis profissionais em segundos.', included: true },
-      { icon: FileText, text: 'Geração de Arquivos', description: 'Crie propostas em PDF, contratos e planilhas prontas para baixar.', included: true },
+      { icon: FileText, text: 'Geração de Arquivos', description: 'Propostas em PDF, contratos e planilhas prontas para baixar.', included: true },
       { icon: TrendingUp, text: 'Inteligência de Mercado', description: 'Espione concorrentes e obtenha dados avançados de tráfego.', included: true },
       { icon: Users, text: 'Auditoria de Instagram', description: 'Análise completa de perfil por URL com plano de ação.', included: true },
-      { icon: HardDrive, text: 'Arcco Drive (2GB)', description: 'Cofre digital para armazenar com segurança tudo o que a IA gerar.', included: true },
+      { icon: HardDrive, text: 'Arcco Drive (2GB)', description: 'Cofre digital para armazenar tudo que a IA gerar.', included: true },
     ],
     popular: false,
     cta: 'Começar Agora',
   },
   {
-    name: 'Pro',
-    description: 'Para empresas em crescimento que desejam escalar.',
-    price: '97',
+    name: 'Ultra',
+    tagline: 'A operação completa com IA',
+    description: 'Ideal para empresas que querem transformar toda a operação com inteligência artificial.',
+    price: '547',
     period: '/mês',
-    features: [
-      { icon: Zap, text: '5 Automações Inteligentes', included: true },
-      { icon: Database, text: '5 Bancos de Conhecimento', included: true },
-      { icon: Infinity, text: 'Iterações Ilimitadas', included: true },
-      { icon: Users, text: '10 Usuários no Time', included: true },
-      { icon: HeadphonesIcon, text: 'Suporte Prioritário', included: true },
-      { icon: Shield, text: 'Integração WhatsApp', included: true },
-      { icon: Clock, text: 'Analytics Avançado', included: true },
-    ],
     popular: true,
-    cta: 'Começar Agora',
+    badge: 'Mais Completo',
+    cta: 'Quero o Ultra',
+    features: [
+      { icon: Zap, text: 'Tudo do Plano Starter', description: '+50 modelos, Agente, Design Studio, Arquivos, Mercado e Drive.', included: true },
+      { icon: Gauge, text: 'Limite de Consumo Estendido', description: 'Muito mais capacidade para equipes que operam em alta escala.', included: true },
+      { icon: Bot, text: 'Ollivia — IA no WhatsApp', description: 'Atende o WhatsApp da sua empresa plug & play: SDR, suporte, vendas e tutor.', included: true },
+      { icon: Globe, text: 'Arcco Builder', description: 'Crie páginas para o seu negócio conversando com IA. Hospede e publique com um clique.', included: true },
+    ],
   },
   {
     name: 'Enterprise',
-    description: 'Projetado para grandes organizações e automações complexas.',
-    price: '297',
-    period: '/mês',
+    tagline: 'Para grandes operações',
+    description: 'Infraestrutura de IA sob medida para times complexos que precisam de escala e controle total.',
+    price: '',
+    priceDisplay: 'Sob Consulta',
+    period: '',
     features: [
-      { icon: Zap, text: 'Automações Ilimitadas', included: true },
-      { icon: Database, text: 'Bancos de Conhecimento Ilimitados', included: true },
-      { icon: Infinity, text: 'Iterações Ilimitadas', included: true },
-      { icon: Users, text: '50+ Usuários no Time', included: true },
-      { icon: HeadphonesIcon, text: 'Suporte 24/7 Dedicado', included: true },
-      { icon: Shield, text: 'Integrações Customizadas', included: true },
-      { icon: Clock, text: 'API e Webhooks', included: true },
-      { icon: Shield, text: 'SLA Garantido', included: true },
+      { icon: Infinity, text: 'Tudo do Plano Ultra', description: 'Acesso completo a todos os produtos e ferramentas Arcco.', included: true },
+      { icon: Database, text: 'Infraestrutura Dedicada', description: 'Ambiente exclusivo com segurança e performance garantidas.', included: true },
+      { icon: Users, text: 'Times e Usuários Ilimitados', description: 'Sem limite de usuários ou workspaces na plataforma.', included: true },
+      { icon: Shield, text: 'Integrações Customizadas', description: 'API, webhooks e conexões sob medida para o seu stack.', included: true },
+      { icon: HeadphonesIcon, text: 'Suporte 24/7 Dedicado', description: 'Gerente de conta exclusivo e SLA garantido em contrato.', included: true },
     ],
     popular: false,
     cta: 'Falar com Vendas',
@@ -86,7 +98,7 @@ export default function Planos() {
           className="text-center mb-16"
         >
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/10 text-primary-foreground/90 mb-4 backdrop-blur-sm">
-            <span className="text-sm font-medium">Preços Simples</span>
+            <span className="text-sm font-medium">Preços Simples e Transparentes</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">
             Escolha o plano ideal para{' '}
@@ -95,27 +107,24 @@ export default function Planos() {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Planos flexíveis que crescem junto com sua empresa. Comece grátis e evolua conforme necessário.
+            Do primeiro acesso à operação completa com IA. Evolua conforme o seu crescimento.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
           {planos.map((plano, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative group ${plano.popular
-                  ? 'z-10 md:-mt-4 md:mb-4'
-                  : ''
-                }`}
+              className={`relative group ${plano.popular ? 'z-10 md:-mt-4 md:mb-4' : ''}`}
             >
-              {/* Popular Badge */}
-              {plano.popular && (
+              {/* Badge */}
+              {plano.badge && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                  <div className="px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white text-sm font-medium shadow-lg shadow-primary/30">
-                    Mais Popular
+                  <div className="px-4 py-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white text-sm font-semibold shadow-lg shadow-primary/30">
+                    {plano.badge}
                   </div>
                 </div>
               )}
@@ -128,11 +137,20 @@ export default function Planos() {
                 }
               `}>
                 <div className="mb-8">
+                  <p className="text-xs font-medium text-primary uppercase tracking-widest mb-1">{plano.tagline}</p>
                   <h3 className="text-2xl font-bold text-foreground mb-2">{plano.name}</h3>
-                  <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">{plano.description}</p>
+                  <p className="text-muted-foreground text-sm mb-6 min-h-[48px]">{plano.description}</p>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-bold text-foreground">R$ {plano.price}</span>
-                    <span className="text-muted-foreground">{plano.period}</span>
+                    {plano.priceDisplay ? (
+                      <span className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                        {plano.priceDisplay}
+                      </span>
+                    ) : (
+                      <>
+                        <span className="text-5xl font-bold text-foreground">R$ {plano.price}</span>
+                        <span className="text-muted-foreground">{plano.period}</span>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -140,11 +158,11 @@ export default function Planos() {
                   <ul className="space-y-4 mb-8">
                     {plano.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start space-x-3">
-                        <div className={`mt-0.5 rounded-full p-1 shrink-0 ${feature.included ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                        <div className="mt-0.5 rounded-full p-1 shrink-0 bg-primary/20 text-primary">
                           <Check className="w-3 h-3" />
                         </div>
                         <div>
-                          <span className={`text-sm font-medium ${feature.included ? 'text-foreground' : 'text-muted-foreground line-through decoration-muted-foreground/50'}`}>
+                          <span className="text-sm font-medium text-foreground">
                             {feature.text}
                           </span>
                           {feature.description && (
@@ -173,25 +191,6 @@ export default function Planos() {
             </motion.div>
           ))}
         </div>
-
-        {/* Enterprise CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-20 text-center"
-        >
-          <p className="text-muted-foreground mb-6">
-            Precisa de uma solução personalizada para sua empresa?
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-secondary/80 backdrop-blur-lg border border-border rounded-xl text-foreground hover:bg-secondary transition-all duration-300 inline-flex items-center space-x-2"
-          >
-            <span>Falar com Especialista</span>
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   )
