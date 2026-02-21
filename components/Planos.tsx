@@ -57,6 +57,7 @@ const planos: Plano[] = [
       { icon: Gauge, text: 'Limite de Consumo Estendido', description: 'Muito mais capacidade para equipes que operam em alta escala.', included: true },
       { icon: Bot, text: 'Ollivia — IA no WhatsApp', description: 'Atende o WhatsApp da sua empresa plug & play: SDR, suporte, vendas e tutor.', included: true },
       { icon: Globe, text: 'Arcco Builder', description: 'Crie páginas para o seu negócio conversando com IA. Hospede e publique com um clique.', included: true },
+      { icon: HardDrive, text: 'Arcco Drive (10GB)', description: 'Armazenamento expandido para todos os arquivos e conteúdos gerados pela IA.', included: true },
     ],
   },
   {
